@@ -14,3 +14,9 @@ Get, decrypt and display info
 4. Save the template in a public reachable URL (like a GitHub repo).
 5. Share the URL. Anyone with the correct password will be able to read the info.
 
+## Ideas
+- Template generator
+- Password validation inb4
+- Multiple outputs depending on user/password (sobre chunk format?)
+- Binary support? (doubtful; timeouts and memory)
+- Compression? (doubtful -> binary)

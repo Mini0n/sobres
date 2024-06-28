@@ -87,7 +87,7 @@
   let encryptInput = function () {
     password = getPassword();
     input = getInput();
-    encrypted = CryptoJS.AES.encrypt(input, password)
+    encrypted = CryptoJS.AES.encrypt(input, password);
 
     setOutput(encrypted);
   }

@@ -76,18 +76,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
-  const infoURL = "";
+  const infoURL = "https://raw.githubusercontent.com/Mini0n/sobres/main/samples/vectron.sbs";
 
   let decryptButton = document.getElementById("access-button");
   let mainDiv = document.getElementById("main-div");
 
-
   let getPassword = function () { return document.getElementById("password-input").value; }
+  let hideAccessDiv = function() { document.getElementById("access-div").display = "none"; }
+  let renderInfo = function(info) { mainDiv.innerHTML = info; }
 
-  let getInfo = function () {
-    password = getPassword();
+  let getInfo = async function () {
+    const password = getPassword();
+    const response = await fetch(infoURL);
+    const info = await response.text();
+
+    decrypted = CryptoJS.AES.decrypt(info, password).toString(CryptoJS.enc.Utf8);
+
     console.log(password);
     console.log(infoURL);
+    console.log(info);
+    console.log(decrypted);
+
+    if (typeof decrypted == "string" && decrypted.length > 0){
+      hideAccessDiv();
+      renderInfo(decrypted);
+    }
   }
 
   decryptButton.addEventListener("click", getInfo);

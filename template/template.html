@@ -8,24 +8,20 @@
 </head>
 
 <body>
-
   <div id="main-div">
 
     <div id="access-div">
       <label id="password-input-label" for="password-input">password:</label>
       <input name="password-input" id="password-input" type="text">
-      <button name="access-button" id="access-button">get info</button>
+      <button name="get-info-button" id="get-info-button">get info</button>
     </div>
 
 
   </div>
-
-
 </body>
 
 <style>
-  html,
-  body {
+  html, body {
     margin: 0px;
     height: 100%;
     background-color: #282C34;
@@ -58,10 +54,6 @@
     font-size: 3vh;
   }
 
-  /* #access-div {
-    margin-top: 10px;
-  } */
-
   #main-div {
     width: 100%;
     height: 100%;
@@ -81,7 +73,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
+    let getInfoButton = document.getElementById("get-info-button")
 
+
+    let getInfo = function () {
+      console.log("getInfo");
+    }
+
+    getInfoButton.addEventListener("click", getInfo);
 
 </script>
 

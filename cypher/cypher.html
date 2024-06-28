@@ -8,25 +8,25 @@
 </head>
 
 <body>
-<h1> 📤 sobres [cypher] </h1>
+  <h1> 📤 sobres [cypher] </h1>
 
-<div id="input-div">
-  <label for="input-textarea">Input text:</label>
-  <textarea name="input-textarea" id="input-textarea"></textarea>
-  <label for="password-input">Password:</label>
-  <input name="password-input" id="password-input" type="text">
-  <p>(there's <b>no turning back</b> if password is lost)</p>
-</div>
+  <div id="input-div">
+    <label for="input-textarea">Input text:</label>
+    <textarea name="input-textarea" id="input-textarea"></textarea>
+    <label for="password-input">Password:</label>
+    <input name="password-input" id="password-input" type="text">
+    <p>(there's <b>no turning back</b> if password is lost)</p>
+  </div>
 
-<div id="encrypt-div">
-  <button name="encrypt-button" id="encrypt-button">Encrypt Input</button>
-</div>
+  <div id="encrypt-div">
+    <button name="encrypt-button" id="encrypt-button">Encrypt Input</button>
+  </div>
 
-<div id="output-div">
-  <label for="output-textarea">Output text:</label>
-  <textarea name="output-textarea" id="output-textarea" readonly></textarea>
-</div>
-
+  <div id="output-div">
+    <label for="output-textarea">Output text:</label>
+    <textarea name="output-textarea" id="output-textarea" readonly></textarea>
+  </div>
+</body>
 
 <style>
   body {
@@ -76,7 +76,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
-
   let encryptButton = document.getElementById("encrypt-button");
   let outputTextArea = document.getElementById("output-textarea");
 
@@ -91,7 +90,6 @@
 
     setOutput(encrypted);
   }
-
 
   encryptButton.addEventListener("click", encryptInput);
 

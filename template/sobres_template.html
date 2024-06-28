@@ -8,20 +8,23 @@
 </head>
 
 <body>
+
   <div id="main-div">
 
     <div id="access-div">
       <label id="password-input-label" for="password-input">password:</label>
       <input name="password-input" id="password-input" type="text">
-      <button name="get-info-button" id="get-info-button">get info</button>
+      <button name="access-button" id="access-button">get info</button>
     </div>
 
 
   </div>
+
 </body>
 
 <style>
-  html, body {
+  html,
+  body {
     margin: 0px;
     height: 100%;
     background-color: #282C34;
@@ -30,7 +33,7 @@
   }
 
   #password-input-label {
-    font-size: 3vh;
+    font-size: 3.0vh;
   }
 
   #password-input {
@@ -41,7 +44,7 @@
     border-style: solid;
     padding: 5px;
     width: 60%;
-    font-size: 3vh;
+    font-size: 3.0vh;
   }
 
   #access-button {
@@ -51,7 +54,7 @@
     border-width: thin;
     padding: 10px;
     margin: 10px;
-    font-size: 3vh;
+    font-size: 3.0vh;
   }
 
   #main-div {
@@ -73,15 +76,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
-    let getInfoButton = document.getElementById("get-info-button")
+  let decryptButton = document.getElementById("decrypt-button");
+  let outputTextArea = document.getElementById("output-textarea");
 
+  let getPassword = function () { return document.getElementById("password-input").value; }
+  let getInput = function () { return document.getElementById("input-textarea").value; }
+  let setOutput = function (output) { outputTextArea.value = output; }
 
-    let getInfo = function () {
-      console.log("getInfo");
-    }
+  let decryptInput = function () {
+    password = getPassword();
+    input = getInput();
+    decrypted = CryptoJS.AES.decrypt(input, password).toString(CryptoJS.enc.Utf8);
 
-    getInfoButton.addEventListener("click", getInfo);
+    setOutput(decrypted);
+  }
 
+  decryptButton.addEventListener("click", decryptInput);
 </script>
 
 </html>

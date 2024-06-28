@@ -88,10 +88,11 @@
     input = getInput();
     decrypted = CryptoJS.AES.decrypt(input, password).toString(CryptoJS.enc.Utf8);
 
-  setOutput(decrypted);
-}
+    setOutput(decrypted);
+  }
 
   decryptButton.addEventListener("click", decryptInput);
+
 </script>
 
 </html>

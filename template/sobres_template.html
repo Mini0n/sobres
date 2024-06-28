@@ -76,22 +76,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
-  let decryptButton = document.getElementById("decrypt-button");
-  let outputTextArea = document.getElementById("output-textarea");
+  const infoURL = "";
+
+  let decryptButton = document.getElementById("access-button");
+  let mainDiv = document.getElementById("main-div");
+
 
   let getPassword = function () { return document.getElementById("password-input").value; }
-  let getInput = function () { return document.getElementById("input-textarea").value; }
-  let setOutput = function (output) { outputTextArea.value = output; }
 
-  let decryptInput = function () {
+  let getInfo = function () {
     password = getPassword();
-    input = getInput();
-    decrypted = CryptoJS.AES.decrypt(input, password).toString(CryptoJS.enc.Utf8);
-
-    setOutput(decrypted);
+    console.log(password);
+    console.log(infoURL);
   }
 
-  decryptButton.addEventListener("click", decryptInput);
+  decryptButton.addEventListener("click", getInfo);
+
 </script>
 
 </html>

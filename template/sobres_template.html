@@ -87,11 +87,6 @@
 
     decrypted = CryptoJS.AES.decrypt(info, password).toString(CryptoJS.enc.Utf8);
 
-    console.log(password);
-    console.log(infoURL);
-    console.log(info);
-    console.log(decrypted);
-
     if (typeof decrypted == "string" && decrypted.length > 0){
       hideAccessDiv();
       renderInfo(decrypted);

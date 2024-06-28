@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sobres</title>
 </head>
+
 <body>
-This is just a PoC
-
-<a href="https://raw.githubusercontent.com/Mini0n/sobres/main/template/sobres_template.html">go to test</a>
-
+  <div id="main-div">
+    <div id="access-div">
+      <label id="password-input-label" for="password-input">password:</label>
+      <input name="password-input" id="password-input" type="text">
+      <button name="access-button" id="access-button">get info</button>
+    </div>
+  </div>
 </body>
+
 <style>
   html,
   body {
@@ -20,5 +26,75 @@ This is just a PoC
     color: #b6b6b6;
     font-family: 'Courier New', Courier, monospace;
   }
+
+  #password-input-label {
+    font-size: 3.0vh;
+  }
+
+  #password-input {
+    margin: 10px;
+    background-color: #383B43;
+    color: #b6b6b6;
+    box-sizing: border-box;
+    border-style: solid;
+    padding: 5px;
+    width: 60%;
+    font-size: 3.0vh;
+  }
+
+  #access-button {
+    background-color: #30353F;
+    color: #b4b4b4;
+    border-color: #b4b4b4;
+    border-width: thin;
+    padding: 10px;
+    margin: 10px;
+    font-size: 3.0vh;
+  }
+
+  #main-div {
+    width: 100%;
+    height: 100%;
+  }
+
+  #access-div {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<script>
+  const infoURL = "https://raw.githubusercontent.com/Mini0n/sobres/main/samples/vectron.sbs";
+
+  let decryptButton = document.getElementById("access-button");
+  let mainDiv = document.getElementById("main-div");
+
+  let getPassword = function () { return document.getElementById("password-input").value; }
+  let hideAccessDiv = function() { document.getElementById("access-div").display = "none"; }
+  let renderInfo = function(info) { mainDiv.innerHTML = info; }
+
+  let getInfo = async function () {
+    const password = getPassword();
+    const response = await fetch(infoURL);
+    const info = await response.text();
+
+    decrypted = CryptoJS.AES.decrypt(info, password).toString(CryptoJS.enc.Utf8);
+
+    if (typeof decrypted == "string" && decrypted.length > 0){
+      hideAccessDiv();
+      renderInfo(decrypted);
+    }
+  }
+
+  decryptButton.addEventListener("click", getInfo);
+
+</script>
+
 </html>

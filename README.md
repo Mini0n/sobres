@@ -1,5 +1,5 @@
 
-# 📤 sobres <sub><sub><sub><sub><sub>(name likely to change)</sub></sub></sub></sub></sub>
+# 📤 sobres
 
 Get, decrypt and display info
 <br/>

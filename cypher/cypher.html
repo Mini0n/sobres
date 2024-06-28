@@ -12,19 +12,21 @@
 
 <div id="input-div">
   <label for="input-textarea">Input text:</label>
-  <br>
   <textarea name="input-textarea" id="input-textarea"></textarea>
+  <label for="password-input">Password:</label>
+  <input name="password-input" id="password-input" type="text">
+  <p>(there's <b>no turning back</b> if password is lost)</p>
 </div>
 
 <div id="encrypt-div">
-  <button>Encrypt Input</button>
+  <button name="encrypt-button" id="encrypt-button">Encrypt Input</button>
 </div>
 
 <div id="output-div">
   <label for="output-textarea">Output text:</label>
-  <br>
   <textarea name="output-textarea" id="output-textarea" readonly></textarea>
 </div>
+
 
 <style>
   body {
@@ -41,6 +43,15 @@
     background-color: #383B43;
     color: #b6b6b6;
     box-sizing: border-box;
+  }
+
+  input {
+    margin-top: 10px;
+    background-color: #383B43;
+    color: #b6b6b6;
+    box-sizing: border-box;
+    border-style: solid;
+    padding: 5px;
   }
 
   div {
@@ -61,6 +72,30 @@
     justify-content: center;
   }
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<script>
+
+  let encryptButton = document.getElementById("encrypt-button");
+  let outputTextArea = document.getElementById("output-textarea");
+
+  let getPassword = function () { return document.getElementById("password-input").value; }
+  let getInput = function () { return document.getElementById("input-textarea").value; }
+  let setOutput = function (output) { outputTextArea.value = output; }
+
+  let encryptInput = function () {
+    password = getPassword();
+    input = getInput();
+    encrypted = CryptoJS.AES.encrypt(input, password)
+
+    setOutput(encrypted);
+  }
+
+
+  encryptButton.addEventListener("click", encryptInput);
+
+</script>
 
 </html>
 

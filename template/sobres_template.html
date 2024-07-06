@@ -77,7 +77,7 @@
   let mainDiv = document.getElementById("main-div");
 
   let getPassword = function () { return document.getElementById("password-input").value; }
-  let hideAccessDiv = function() { document.getElementById("access-div").display = "none"; }
+  let hideAccessDiv = function() { document.getElementById("access-div").remove(); }
   let renderInfo = function(info) { mainDiv.innerHTML = info; }
 
   let getInfo = async function () {

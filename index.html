@@ -8,24 +8,13 @@
 </head>
 
 <body>
-
-
-
   <div id="main-div">
-
-
     <div id="access-div">
       <label id="password-input-label" for="password-input">password:</label>
       <input name="password-input" id="password-input" type="text">
       <button name="access-button" id="access-button">get info</button>
     </div>
-
-
   </div>
-
-
-
-
 </body>
 
 <style>
@@ -82,13 +71,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
-  const infoURL = "https://raw.githubusercontent.com/Mini0n/sobres/main/samples/vectron.sbs";
+  const infoURL = "https://raw.githubusercontent.com/Mini0n/sobres/main/samples/invitacion.sbs";
 
   let decryptButton = document.getElementById("access-button");
   let mainDiv = document.getElementById("main-div");
 
   let getPassword = function () { return document.getElementById("password-input").value; }
-  let hideAccessDiv = function() { document.getElementById("access-div").display = "none"; }
+  let hideAccessDiv = function() { document.getElementById("access-div").remove(); }
   let renderInfo = function(info) { mainDiv.innerHTML = info; }
 
   let getInfo = async function () {
